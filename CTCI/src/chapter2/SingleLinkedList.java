@@ -8,7 +8,7 @@ public class SingleLinkedList {
 		list.addNode("two");
 		list.addNode("three");
 		list.printNodes();
-	    System.out.println(list.findNode("two").getData());
+	    	System.out.println(list.findNode("two").getData());
 		Node n = new Node("three"); 
 		list.deleteNode(n);
 		list.printNodes();
