@@ -8,7 +8,7 @@ public class DoubleLinkedList {
 		list.addNode("two");
 		list.addNode("three");
 		list.printNodes();
-		list.deleteNode("one");
+		list.deleteNode("one"); 
 		list.printNodes();
 		System.out.println(list.getHead().getData());
 		list.printTail();
