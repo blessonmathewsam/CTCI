@@ -6,7 +6,7 @@ public class SingleLinkedList {
 		LinkedList list = new LinkedList();
 		list.addNode("one");
 		list.addNode("two");
-		list.addNode("three");
+		list.addNode("two");
 		list.printNodes();
 	    System.out.println(list.findNode("two").getData());
 		Node n = new Node("three"); 
