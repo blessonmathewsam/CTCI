@@ -138,7 +138,7 @@ public class DoubleLinkedList {
 			Node n = head;
 			while(n.next != null){
 				System.out.print(n.data + "<->");
-				n = n.next;
+				n = n.next; 
 			}
 			System.out.println(n.data);
 		}
