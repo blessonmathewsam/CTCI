@@ -4,37 +4,37 @@ public class SinglyLinkedList {
 
 	public static void main(String[] args) {
 		LinkedList list = new LinkedList();
-		list.addNode("one");
-		list.addNode("two");
-		list.addNode("three");
+		list.addNode(1);
+		list.addNode(2);
+		list.addNode(3);
 		list.printNodes();
-		list.deleteNode("one"); 
+		list.deleteNode(1); 
 		list.printNodes();
 		System.out.println(list.getHead().getData());
 		list.printTail();
-		System.out.println(list.findNode("one").getData());
+		System.out.println(list.findNode(1).getData());
 	}
 
 	public static class Node {
 		
-		private String data;
+		private int data;
 		private Node next;
 		
 		public Node(){
-			this.data = "";
+			this.data = -1;
 			this.next = null;
 		}
 		
-		public Node(String s){
-			this.data = s;
+		public Node(int n){
+			this.data = n;
 			this.next = null;
 		}
 		
-		public String getData() {
+		public int getData() {
 			return data;
 		}
-		public void setData(String data) {
-			this.data = data;
+		public void setData(int n) {
+			this.data = n;
 		}
 		public Node getNext() {
 			return next;
@@ -66,47 +66,68 @@ public class SinglyLinkedList {
 			this.head.setNext(tail); 
 		}
 
-		public Node addNode(String s){
+		public Node addNode(int n){
 			if(this.head == null){
-				this.head = new Node(s);
+				this.head = new Node(n);
 				this.tail = this.head;
 				return this.head;
 			}
-			Node n = new Node(s);
-			this.tail.setNext(n);;
-			this.tail = n;
+			Node node = new Node(n);
+			this.tail.setNext(node);;
+			this.tail = node;
 			return null;
 		}
+		
+		public Node addNode(int[] array){
+			if(array.length > 0){
+				Boolean flag = false;
+				if(this.head == null){
+					this.head = new Node(array[0]);
+					this.tail = this.head;
+					flag = true;
+				}
+				int i = 0;
+				if(flag) i = 1;
+				for(;i < array.length; i++){
+					Node node = new Node(array[i]);
+					this.tail.setNext(node);;
+					this.tail = node;
+				}
+				return this.head;
+			}
+			return null;
+		}
+		
 		
 		public Node addNode(Node n){
 			return this.addNode(n.getData());
 		}
 		
-		public Node findNode(String s){
+		public Node findNode(int num){
 			Node n = this.head;
-			if(n.getData().equals(s))
+			if(n.getData() == num)
 				return n;
 			while(n.next != null){
-				if(n.next.getData().equals(s))
+				if(n.next.getData() == num)
 					return n.next;
 				else
 					n = n.next;
 			}
-			return new Node("Not found");
+			return new Node(-1);
 		}
 		
 		public Node findNode(Node n){
 			return this.findNode(n.getData());
 		}
 		
-		public Node deleteNode(String s){
+		public Node deleteNode(int num){
 			Node n = this.head;
-			if(n.getData().equals(s)){
+			if(n.getData() == num){
 				this.head = n.next;
 				return this.head;
 			}
 			while(n.next != null){
-				if(n.next.getData().equals(s)){
+				if(n.next.getData() == num){
 					if(n.next.next == null){
 						this.tail = n;
 						n.setNext(null);;
@@ -118,16 +139,16 @@ public class SinglyLinkedList {
 				else
 					n = n.next;
 			}
-			return new Node("Not found");
+			return new Node(-1);
 		}
 		
 		public void printNodes(){
 			Node n = head;
 			while(n.next != null){
-				System.out.print(n.data + "<->");
+				System.out.print(n.getData() + "<->");
 				n = n.next; 
 			}
-			System.out.println(n.data);
+			System.out.println(n.getData());
 		}
 		
 		public Node getHead(){
