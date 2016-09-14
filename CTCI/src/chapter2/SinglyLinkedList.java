@@ -49,32 +49,38 @@ public class SinglyLinkedList {
 	
 		private Node head;
 		private Node tail;
+		private int size;
 		
 		public LinkedList(){
 			this.head = null;
 			this.tail = null;
+			this.size = 0;
 		}
 		
 		public LinkedList(Node head){
 			this.head = head;
 			this.tail = head;
+			this.size = 1;
 		}
 		
 		public LinkedList(Node head, Node tail) {
 			this.head = head;
 			this.tail = tail;
-			this.head.setNext(tail); 
+			this.head.setNext(tail);
+			this.size = 2;
 		}
 
 		public Node addNode(int n){
 			if(this.head == null){
 				this.head = new Node(n);
 				this.tail = this.head;
+				this.size = 1;
 				return this.head;
 			}
 			Node node = new Node(n);
 			this.tail.setNext(node);;
 			this.tail = node;
+			this.size += 1;
 			return null;
 		}
 		
@@ -93,6 +99,7 @@ public class SinglyLinkedList {
 					this.tail.setNext(node);;
 					this.tail = node;
 				}
+				this.size += array.length;
 				return this.head;
 			}
 			return null;
@@ -165,6 +172,10 @@ public class SinglyLinkedList {
 		
 		public void printTail(){
 			System.out.println(this.tail.getData());
+		}
+		
+		public int size(){
+			return this.size;
 		}
 		
 	}
