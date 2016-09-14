@@ -27,7 +27,7 @@ class LinkedList(object):
 			print(node.data)
 			return
 		while node.next is not None:
-			print(str(node.data) + "->")
+			print(str(node.data) + "->", end = " ")
 			node = node.next
 		print(str(node.data))
 
@@ -39,6 +39,20 @@ class LinkedList(object):
 		while node.next is not None:
 			if node.next.data == data:
 				node.next = node.next.next
+				return
+			else:
+				node = node.next
+
+list = LinkedList()
+list.addNode(1)
+list.addNode(2)	
+list.addNode(3)
+list.addNode(4)
+list.addNode(5)
+list.printNodes()
+list.deleteNode(3)
+list.printNodes()
+
 
 			
 		
