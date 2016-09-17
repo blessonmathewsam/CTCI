@@ -152,7 +152,7 @@ public class SinglyLinkedList {
 		public void printNodes(){
 			Node n = head;
 			while(n.next != null){
-				System.out.print(n.getData() + "<->");
+				System.out.print(n.getData() + "->");
 				n = n.next; 
 			}
 			System.out.println(n.getData());
@@ -163,6 +163,16 @@ public class SinglyLinkedList {
 		}
 		
 		public Node getTail(){
+			return this.tail;
+		}
+		
+		public Node setHead(Node node){
+			this.head = node;
+			return this.head;
+		}
+		
+		public Node setTail(Node node){
+			this.tail = node;
 			return this.tail;
 		}
 		
